@@ -1,0 +1,228 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #DFB8FD; 
+    background-image: linear-gradient(to bottom, #DFB8FD, #B8B7FD, #EFFBFF);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+}
+
+.background-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    opacity: 0.2;
+    pointer-events: none;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.background-video video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.container {
+    background-color: #F6DDFF;
+    z-index: 1;
+    width: 400px;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.20);
+    text-align: center;
+    position: relative;
+    transition: transform 0.3s ease-in-out;
+}
+.container:hover {
+    transform: translateY(-10px);
+}
+
+/* Separate pseudo-element for Top GIF */
+.container::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 120px;
+    background-image: url('top-gif.gif');
+    background-size: contain;
+    opacity: 0;
+    z-index: 2;
+    transition: opacity 0.5s ease, top 0.5s ease;
+}
+
+.container:hover::before {
+    opacity: 1;
+    top: -75px; /* Move the top GIF higher on hover */
+}
+
+/* Separate pseudo-element for Left GIF */
+.container::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: -100px;
+    width: 180px;
+    height: 180px;
+    background-image: url('left-gif.gif');
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 0.5s ease, left 0.5s ease;
+    transform: translateY(-60%);
+}
+
+.container:hover::after {
+    opacity: 1;
+    left: -125px; /* Slide the left GIF closer */
+}
+
+/* New element for the right GIF */
+.container .right-gif {
+    position: absolute;
+    top: 50%;
+    right: -100px;
+    width: 180px;
+    height: 180px;
+    background-image: url('right-gif.gif');
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 0.5s ease, right 0.5s ease;
+    transform: translateY(-60%);
+}
+
+.container:hover .right-gif {
+    opacity: 1;
+    right: -125px; /* Slide the right GIF closer */
+}
+
+.container img {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    background-color: #fff;
+    transition: box-shadow 0.3s ease-in-out;
+    border: 5px solid hsl(241, 95%, 85%);
+}
+.container img:hover {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+h1 {
+    font-size: 17px;
+    margin: 1px 0 2px;
+    color: #4B3B80;
+    font-weight: 600;
+}
+h1:nth-of-type(2) {
+    margin-bottom: 10px;
+}
+
+h2 {
+    font-size: 13px;
+    color: #4A4A8A;
+    margin-bottom: 5px;
+    font-weight: 400;
+}
+h2:nth-of-type(2) {
+    margin-bottom: 20px;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+.social-icons button {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 18px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+.social-icons button:hover {
+    transform: scale(1.1);
+}
+.social-icons button i {
+    font-size: 20px;
+}
+
+.social-media-btn.youtube {
+    background-color: #FF0000; 
+}
+.social-media-btn.instagram {
+    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+}
+.social-media-btn.linkedin {
+    background-color: #0077b5;
+}
+
+.actions {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+.actions button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 30px;
+    background-color: #DFB8FD;
+    color: #4A4A8A;;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+.actions button:hover {
+    background-color: #B8CEFF;
+    transform: translateY(-3px);
+}
+
+.interactions {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 20px;
+    cursor: pointer;
+}
+.interactions div {
+    display: flex;
+    align-items: center;
+    color: #4A4A8A;
+    font-size: 14px;
+}
+.interactions div i {
+    margin-right: 5px;
+}
+.interactions div {
+    transition: color 0.3s ease;
+}
+.interactions div:hover {
+    color: #B8CEFF;
+}
