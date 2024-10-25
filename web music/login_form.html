@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Music Playlist Login</title>
+    <link rel="icon" href="icon.png" type="image/png">
+</head>
+<body style="background-color: #1A1347; font-family: Arial, sans-serif; margin: 0; padding: 0; display: flex; justify-content: center; align-items: center; height: 100vh; background-image: url('background-music.jpg'); background-size: cover; background-position: center; color: white;">
+    <div class="background-video" style="position: absolute; top: 0; left: 0; width: 100%; height: 100vh; opacity: 0.1;">
+        <video src="bg.mp4" alt="Background Video" style="width: 100%; height: 100vh; object-fit: cover;" loop autoplay muted></video>
+    </div>
+    <div class="login-container" style="position: relative; z-index: 1; background-color: #3C2D57; padding: 20px; border-radius: 10px; box-shadow: 0 0 15px rgba(0, 0, 0, 0.5); width: 300px; text-align: center;">
+        <h1 style="color: #F1B7EA;">Login</h1>
+        <form action="music_playlist.html" method="GET">
+            <input type="text" name="username" placeholder="Username" required style="width: 280px; padding: 10px; margin: 10px 0; background-color: #694786; border: none; border-radius: 5px; color: white; font-size: 16px;">
+            <input type="password" name="password" placeholder="Password" required style="width: 280px; padding: 10px; margin: 10px 0; background-color: #694786; border: none; border-radius: 5px; color: white; font-size: 16px;">
+            <p>
+                <input type="submit" value="Login" style="background-color: #5D479A; color: white; border: none; padding: 10px; width: 100%; border-radius: 5px; font-size: 16px; cursor: pointer;" onmouseover="this.style.background-color='#A486B0'" onmouseout="this.style.background-color='#5D479A'">
+            </p>
+        </form>
+        <p><a href="#" style="color: #F1B7EA; text-decoration: none;" onmouseover="this.style.text-decoration='underline'" onmouseout="this.style.text-decoration='none'">Forgot your password?</a></p>
+    </div>
+</body>
+</html>
