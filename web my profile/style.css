@@ -10,6 +10,8 @@ body {
     background-color: #DFB8FD; 
     background-image: linear-gradient(to bottom, #DFB8FD, #B8B7FD, #EFFBFF);
     display: flex;
+    width: 85%;
+    max-width: 400px;
     justify-content: center;
     align-items: center;
     height: 100vh;
