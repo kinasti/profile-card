@@ -6,55 +6,145 @@
     <title>Music Playlist</title>
     <link rel="icon" href="icon.png" type="image/png">
     <style>
-        /* Media Queries for Further Customization */
-        @media (max-width: 600px) {
+        body {
+            background-color: #1A1347;
+            background-image: linear-gradient(to bottom, #1A1347, #3C2D57, #694786);
+            font-family: 'Arial', sans-serif;
+            color: #F1B7EA;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .background-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            opacity: 0.1;
+            pointer-events: none;
+        }
+
+        .background-video video {
+            width: 100%;
+            height: 100vh;
+            object-fit: cover;
+        }
+
         h1 {
-             font-size: 2rem; /* Adjust font size for smaller screens */
+            color: #F1B7EA;
+            z-index: 1;
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 10px;
         }
+
         .music-playlist {
-            padding: 10px; /* Less padding for smaller screens */
+            width: 90%;
+            max-width: 1000px;
+            padding: 20px;
+            background-color: #3C2D57;
+            border-radius: 20px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px; /* Space between buttons */
         }
+
+        .music-playlist button {
+            background-color: #5A4A75; /* Distinct background for buttons */
+            border: none;
+            cursor: pointer;
+            border-radius: 15px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            padding: 10px; /* Padding for the button */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 180px; /* Fixed width for buttons */
+            margin: 0 auto; /* Center the buttons */
+        }
+
         .music-playlist img {
-            width: 120px; /* Smaller image size for mobile */
-            height: 120px;
+            width: 100%; /* Responsive image size */
+            height: auto; /* Maintain aspect ratio */
+            border-radius: 12px;
+            transition: transform 0.3s;
         }
+
+        .music-playlist span {
+            margin-top: 10px;
+            font-size: 1rem;
+            color: #F1B7EA;
+            text-align: center;
+        }
+
+        /* Hover Effect for Buttons */
+        .music-playlist button:hover {
+            box-shadow: 0 4px 10px rgba(241, 183, 234, 0.5);
+            transform: scale(1.05); /* Slightly increase size on hover */
+        }
+
+        footer {
+            margin-top: 5px;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #F1B7EA;
+            margin-bottom: 5px;
+        }
+
+        /* Media Queries for Responsive Design */
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2rem; /* Adjust font size for smaller screens */
+            }
+            .music-playlist {
+                padding: 10px; /* Less padding for smaller screens */
+            }
+            .music-playlist button {
+                width: 100%; /* Full width buttons on mobile */
+                max-width: 150px; /* Limit maximum width */
+            }
+            .music-playlist img {
+                width: 100%; /* Responsive image size */
+                height: auto; /* Maintain aspect ratio */
+            }
         }
     </style>
 </head>
-<body style="background-color: #1A1347; background-image: linear-gradient(to bottom, #1A1347, #3C2D57, #694786); font-family: 'Arial', sans-serif; color: #F1B7EA; margin: 0; padding: 0; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center;">
-    <div class="background-video" style="position: absolute; top: 0; left: 0; width: 100%; height: 100vh; opacity: 0.1; pointer-events: none;">
-        <video src="bg.mp4" alt="Background Video" style="width: 100%; height: 100vh; object-fit: cover;" loop autoplay muted></video>
+<body>
+    <div class="background-video">
+        <video src="bg.mp4" alt="Background Video" loop autoplay muted></video>
     </div>
-    <h1 style="color: #F1B7EA; position: relative; z-index: 1; text-align: center; font-size: 36px; margin-bottom: 10px;">Music Playlist</h1>
-    <div class="music-playlist" style="width: 1000px; height: 400px; margin: 30px auto; padding: 20px; background-color: #3C2D57; border-radius: 20px; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); text-align: center;">
-        <h2 style="color: #F1B7EA; text-align: center; font-size: 25px; margin-bottom: 10px; margin-top: 5px;">Quick Pick</h2><br>
+    <h1>Music Playlist</h1>
+    <div class="music-playlist">
         <button 
-            style="background-color: transparent; border: none; cursor: pointer; transition: transform 0.3s, box-shadow 0.3s; display: inline-block; margin: 0 auto;"
-            onmouseover="this.style.boxShadow='0 4px 10px rgba(241, 183, 234, 0.5)'; this.style.borderRadius='15px'; this.children[0].style.transform='scale(1.1)'; this.children[0].style.boxShadow='0 4px 10px rgba(0, 0, 0, 0.5)';"
-            onmouseout="this.style.boxShadow=''; this.style.borderRadius='15px'; this.children[0].style.transform='scale(1)'; this.children[0].style.boxShadow='';"
+            onclick="location.href='desc_music1.html'"
         >
-            <img src="song1.jpeg" alt="Pocket Locket" onclick="location.href='desc_music1.html'" style="width: 180px; height: 180px; border-radius: 12px; transition: transform 0.3s;">
-            <span style="display: block; margin-top: 15px; font-size: 18px; color: #F1B7EA; text-align: center;">Pocket Locket - Alaina Castillo</span><br>
+            <img src="song1.jpeg" alt="Pocket Locket">
+            <span>Pocket Locket - Alaina Castillo</span>
         </button>
         <button 
-            style="background-color: transparent; border: none; cursor: pointer; transition: transform 0.3s, box-shadow 0.3s; display: inline-block; margin: 0 auto;"
-            onmouseover="this.style.boxShadow='0 4px 10px rgba(241, 183, 234, 0.5)'; this.style.borderRadius='15px'; this.children[0].style.transform='scale(1.1)'; this.children[0].style.boxShadow='0 4px 10px rgba(0, 0, 0, 0.5)';"
-            onmouseout="this.style.boxShadow=''; this.style.borderRadius='15px'; this.children[0].style.transform='scale(1)'; this.children[0].style.boxShadow='';"
+            onclick="location.href='desc_music2.html'"
         >
-            <img src="song2.jpeg" alt="Suzume" onclick="location.href='desc_music2.html'" style="width: 180px; height: 180px; border-radius: 12px; transition: transform 0.3s;">
-            <span style="display: block; margin-top: 15px; font-size: 18px; color: #F1B7EA; text-align: center;">Suzume - Radwimps(ft. Toaka)</span><br>
+            <img src="song2.jpeg" alt="Suzume">
+            <span>Suzume - Radwimps(ft. Toaka)</span>
         </button>
         <button 
-            style="background-color: transparent; border: none; cursor: pointer; transition: transform 0.3s, box-shadow 0.3s; display: inline-block; margin: 0 auto;"
-            onmouseover="this.style.boxShadow='0 4px 10px rgba(241, 183, 234, 0.5)'; this.style.borderRadius='15px'; this.children[0].style.transform='scale(1.1)'; this.children[0].style.boxShadow='0 4px 10px rgba(0, 0, 0, 0.5)';"
-            onmouseout="this.style.boxShadow=''; this.style.borderRadius='15px'; this.children[0].style.transform='scale(1)'; this.children[0].style.boxShadow='';"
+            onclick="location.href='desc_music3.html'"
         >
-            <img src="song3.jpeg" alt="2Worlds" onclick="location.href='desc_music3.html'" style="width: 180px; height: 180px; border-radius: 12px; transition: transform 0.3s;">
-            <span style="display: block; margin-top: 15px; font-size: 18px; color: #F1B7EA; text-align: center;">2Worlds - Madge & Valorant</span><br>
+            <img src="song3.jpeg" alt="2Worlds">
+            <span>2Worlds - Madge & Valorant</span>
         </button>
     </div>
-    <footer style="margin-top: 5px; text-align: center; font-size: 14px; color: #F1B7EA; margin-bottom: 5px;">
-        &copy; 2024 Kinastee
-    </footer>
+    <footer>&copy; 2024 Kinastee</footer>
 </body>
 </html>
