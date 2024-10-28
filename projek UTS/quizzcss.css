@@ -1,0 +1,268 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(to bottom, #203F9A, #94C2DA); /* Top to bottom gradient */
+    color: #203F9A; /* Bright Blue */
+    transition: background 0.3s, color 0.3s;
+    width: 100vw;
+    height: 100vh;
+}
+/* Background video container */
+.background-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1; /* Supaya di belakang konten lain */
+}
+
+/* Styling untuk video */
+.background-video video {
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover; /* Agar video memenuhi area dengan rasio aslinya */
+    opacity: 0.4; /* Atur opacity video */
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #94C2DA; /* Pastel Blue */
+    padding: 15px 30px;
+    border-radius: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #203F9A; /* Bright Blue */
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    padding: 10px 20px;
+    color: #ffffff;
+    border-radius: 20px;
+    background-color: #203F9A; /* Bright Blue */
+    transition: background-color 0.3s;
+}
+
+.nav-links a:hover {
+    background-color: #937bb6; /* Slightly lighter blue */
+}
+
+/* Toggle Button */
+.theme-toggle {
+    background-color: #ffffff;
+    color: #203F9A; /* Bright Blue */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 10px;
+    margin-bottom: 25px;
+}
+
+.theme-toggle:hover {
+    background-color: black;
+    color: white;
+    box-shadow: 0 0 10px  #250e2c;
+}
+
+/* Question Card */
+.question-card {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    width: 55%;
+    max-width: 800px;
+    border-radius: 15px;
+    margin: 0 auto 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+h1 {
+    text-align: center;
+    color: white; /* Bright mode header color */
+    margin-bottom: 25px; 
+    font-size: 1.5em;   
+}
+
+.question {
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+#options-container label {
+    display: block;
+    padding: 10px;
+    background-color: #203F9A; /* Bright mode option label */
+    color: #fff; /* Bright mode option text */
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin: 10px 0;
+}
+
+#options-container label:hover {
+    background-color: #4A90E2; /* Bright mode option hover */
+}
+
+/* Next Button */
+#next-btn {
+    background-color: #203F9A; /* Bright mode next button */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    display: block;
+    margin: 20px auto;
+}
+
+#next-btn:hover {
+    background-color: #4A90E2; /* Bright mode next button hover */
+}
+
+/* Score Display */
+#score-container h2 {
+    text-align: center;
+    font-size: 2em;
+    font-weight: bold;
+    color: #203F9A;
+}
+
+/* Score Container - Bright Mode */
+#score-container {
+    display: none;
+    margin: 0 auto 20px;
+    padding: 20px;
+    width: 100%;
+    max-width: 800px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    color: #203F9A; /* Bright mode score text */
+}
+
+/* Retry Button */
+.retry-btn {
+    background-color: #203F9A; /* Bright mode retry button */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.retry-btn:hover {
+    background-color: #4A90E2; /* Bright mode retry button hover */
+}
+
+/* Dark Mode Styles */
+body.dark-mode {
+    background: linear-gradient(135deg, #250e2c, #837ab6); /* Dark mode background */
+    color: #f7c2ca; /* Dark mode text color */
+}
+
+body.dark-mode .logo {
+    color: #f7c2ca;
+}
+
+body.dark-mode .navbar {
+    background-color: #250e2c; /* Dark mode navbar */
+}
+
+body.dark-mode .nav-links a {
+    background-color: #837ab6; /* Dark mode link background */
+}
+
+body.dark-mode .theme-toggle {
+    background-color: black; /* Dark mode toggle button */
+    color:white;
+}
+
+body.dark-mode .theme-toggle:hover {
+    background-color: white;
+    color: black;
+    box-shadow: 0 0 10px #837ab6; 
+}
+
+body.dark-mode .question-card {
+    background: rgba(37, 14, 44, 0.8); /* Dark mode question card */
+}
+
+body.dark-mode #score-container h2 {
+    color: #f7c2ca;
+}
+
+body.dark-mode #next-btn {
+    background-color: #837ab6; /* Dark mode next button */
+}
+
+body.dark-mode #options-container label {
+    background-color: #837ab6; /* Dark mode option label */
+}
+
+/* Dark Mode - Score Container */
+body.dark-mode #score-container {
+    background-color: #837ab6; /* Dark mode score container */
+    color: #f7c2ca; /* Dark mode score text */
+    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+}
+
+body.dar-mode .retry-btn {
+    background-color: #837ab6;
+}
+
+body.dar-mode .retry-btn:hover {
+    background-color: #937bb6; /* Bright mode retry button hover */
+}
+
+/* Responsive Layout for Mobile */
+@media (max-width: 768px) {
+    body {
+        width: 100vw;
+        height: 100vh;
+    
+    }
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        gap: 20px;
+    }
+}

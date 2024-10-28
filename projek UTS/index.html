@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Simple Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="icon.png" type="image/png">
+</head>
+<body>
+    <div class="background-video">
+        <video src="bg.mp4" alt="Background Video" loop autoplay muted></video>
+    </div>
+
+    <div class="container">
+        <!-- Navbar -->
+        <nav class="navbar">
+            <div class="logo">KinSphere</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="weather.html">Weather</a></li>
+                <li><a href="calculator.html">Calculator</a></li>
+                <li><a href="ageCalculator.html">Age Calculator</a></li>
+                <li><a href="stopwatch.html">Stopwatch</a></li>
+                <li><a href="quizz.html">Quizz</a></li>
+            </ul>
+        </nav>
+
+        <!-- Dark Mode Toggle Button -->
+        <button id="theme-toggle" class="theme-toggle">Switch to Dark Mode</button>
+
+        <!-- Main Content Layout -->
+        <main>
+            <section class="intro" id="home">
+                <h1>Welcome to the Dashboard</h1>
+                <p>Manage your tasks and access tools easily!<br>Let’s make today productive!</p>
+            </section>
+
+            <!-- Container for Tools -->
+            <div class="tool-container">
+                <section class="tool">
+                    <h2>Weather Updates 🌤️🌧️</h2>
+                    <p>Current temperature: <strong>25°C</strong></p>
+                    <p>Humidity: <strong>60%</strong></p>
+                    <p>Weather status: <strong>Clear sky</strong></p>
+                </section>
+
+                <section class="tool">
+                    <h2>Simple Calculator ➕➗</h2>
+                    <p>Use the calculator for quick math tasks!</p>
+                </section>
+
+                <section class="tool">
+                    <h2>Age Calculator 🎂📅</h2>
+                    <p>Find out your exact age by entering your date of birth.</p>
+                </section>
+
+                <section class="tool">
+                    <h2>Stopwatch & Timer ⏱️⏳</h2>
+                    <p>Track time using the stopwatch tool and set timers!</p>
+                    <p>Includes a clock feature to display the current time.</p>
+                </section>
+
+                <section class="tool">
+                    <h2>Fun Quiz ❓</h2>
+                    <p>Test your knowledge with 10 quizzes on:</p>
+                    <p>HTML, CSS, and JavaScript</p>
+                    <p>Score your results and see how well you did!</p>
+                </section>
+
+                <section class="tool">
+                    <h2>Extra Tool 🔧</h2>
+                    <p>Additional functionality can be added here!</p>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <!-- About Me Section -->
+    <footer class="about-me">
+        <h2>About Me</h2>
+	<p>Hi! I’m Kinasti Athifasari, a dedicated college student studying at Indonesia University of Education.</p>
+	<p>Welcome to my dashboard!</p>
+	<p>Let’s connect!</p>
+    </footer>
+
+    <!-- JavaScript for Dark Mode Toggle -->
+    <script>
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const body = document.body;
+
+        themeToggleBtn.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+
+            if (body.classList.contains('dark-mode')) {
+                themeToggleBtn.textContent = 'Switch to Light Mode';
+            } else {
+                themeToggleBtn.textContent = 'Switch to Dark Mode';
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather App</title>
+  <link rel="stylesheet" href="weathercss.css">
+    <link rel="icon" href="icon.png" type="image/png">
+</head>
+<body>
+    <div class="background-video">
+        <video src="bg.mp4" alt="Background Video" loop autoplay muted></video>
+    </div>
+
+  <div class="container">
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="logo">KinSphere</div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="weather.html">Weather</a></li>
+        <li><a href="calculator.html">Calculator</a></li>
+        <li><a href="ageCalculator.html">Age Calculator</a></li>
+        <li><a href="stopwatch.html">Stopwatch</a></li>
+        <li><a href="quizz.html">Quizz</a></li>
+      </ul>
+    </nav>
+
+    <!-- Dark Mode Toggle Button -->
+    <button id="theme-toggle" class="theme-toggle">Switch to Dark Mode</button>
+
+    <!-- Input Section -->
+    <div class="input-card card">
+      <input type="text" id="city-input" placeholder="Enter City Name" />
+      <button id="search-btn">Search</button>
+    </div>
+
+    <!-- Weather Section -->
+    <div class="weather-card">
+      <div class="weather-location">
+        <h1 id="city-name">City Name</h1>
+        <div id="weather-icon" class="weather-icon">☁️</div>
+        <p id="weather-description">Weather Description</p>
+      </div>
+
+      <!-- Weather Details Grid -->
+      <div class="weather-details-grid">
+        <div class="card weather-detail">
+          <h3>Temperature</h3>
+          <p><span id="temperature">--</span>°C</p>
+        </div>
+        <div class="card weather-detail">
+          <h3>Humidity</h3>
+          <p><span id="humidity">--</span>%</p>
+        </div>
+        <div class="card weather-detail">
+          <h3>Wind Speed</h3>
+          <p><span id="wind-speed">--</span> m/s</p>
+        </div>
+        <div class="card weather-detail">
+          <h3>UV Index</h3>
+          <p><span id="uv-index">--</span></p>
+        </div>
+        <div class="card weather-detail">
+          <h3>Visibility</h3>
+          <p><span id="visibility">--</span> km</p>
+        </div>
+        <div class="card weather-detail">
+          <h3>Air Pressure</h3>
+          <p><span id="air-pressure">--</span> hPa</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const apiKey = 'cccd511e9ad0d9b2e8b7498b758a902a'; // Replace with your OpenWeatherMap API key
+
+    document.addEventListener("DOMContentLoaded", function () {
+      const searchButton = document.getElementById('search-btn');
+      const cityInput = document.getElementById('city-input');
+
+      searchButton.addEventListener('click', function () {
+        const city = cityInput.value.trim();
+        if (city) {
+          fetchWeatherData(city);
+        }
+      });
+
+      // Fetch weather for a default city on page load
+      fetchWeatherData('Jakarta');
+    });
+
+    async function fetchWeatherData(city) {
+      const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+      try {
+        const response = await fetch(url);
+        const data = await response.json();
+        displayWeatherData(data);
+      } catch (error) {
+        console.error('Error fetching the weather data:', error);
+      }
+    }
+
+function displayWeatherData(data) {
+  document.getElementById('city-name').textContent = data.name;
+  document.getElementById('temperature').textContent = data.main.temp;
+  document.getElementById('weather-description').textContent = data.weather[0].description;
+  document.getElementById('humidity').textContent = data.main.humidity;
+  document.getElementById('wind-speed').textContent = data.wind.speed;
+  document.getElementById('visibility').textContent = (data.visibility / 1000).toFixed(2);
+  document.getElementById('air-pressure').textContent = data.main.pressure;
+
+  // Get the weather condition code
+  const weatherId = data.weather[0].id;
+  const weatherIcon = document.getElementById('weather-icon');
+
+  // Map weather condition codes to emojis
+  if (weatherId >= 200 && weatherId <= 232) {
+    weatherIcon.textContent = '🌩️'; // Thunderstorm
+  } else if (weatherId >= 300 && weatherId <= 321) {
+    weatherIcon.textContent = '🌦️'; // Drizzle
+  } else if (weatherId >= 500 && weatherId <= 531) {
+    weatherIcon.textContent = '🌧️'; // Rain
+  } else if (weatherId >= 600 && weatherId <= 622) {
+    weatherIcon.textContent = '❄️'; // Snow
+  } else if (weatherId >= 701 && weatherId <= 781) {
+    if (weatherId === 781) {
+      weatherIcon.textContent = '🌪️'; // Tornado
+    } else {
+      weatherIcon.textContent = '🌫️'; // Atmosphere (Mist, Fog, Smoke, etc.)
+    }
+  } else if (weatherId === 800) {
+    weatherIcon.textContent = '☀️'; // Clear Sky (Sun)
+  } else if (weatherId === 801) {
+    weatherIcon.textContent = '🌤️'; // Few Clouds
+  } else if (weatherId === 802) {
+    weatherIcon.textContent = '⛅'; // Scattered Clouds
+  } else if (weatherId === 803 || weatherId === 804) {
+    weatherIcon.textContent = '☁️'; // Broken/Overcast Clouds
+  } else {
+    weatherIcon.textContent = '🌡️'; // Default for other conditions
+  }
+}
+
+    // JavaScript for theme toggle
+    const toggleButton = document.getElementById('theme-toggle');
+    const body = document.body;
+
+    toggleButton.addEventListener('click', () => {
+      body.classList.toggle('dark-mode');
+      if (body.classList.contains('dark-mode')) {
+        toggleButton.textContent = 'Switch to Bright Mode';
+      } else {
+        toggleButton.textContent = 'Switch to Dark Mode';
+      }
+    });
+  </script>
+</body>
+</html>

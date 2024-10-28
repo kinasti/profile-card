@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculator</title>
+  <link rel="stylesheet" href="calculatorcss.css">
+    <link rel="icon" href="icon.png" type="image/png">
+</head>
+<body>
+    <div class="background-video">
+        <video src="bg.mp4" alt="Background Video" loop autoplay muted></video>
+    </div>
+
+  <div class="container">
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="logo">KinSphere</div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="weather.html">Weather</a></li>
+        <li><a href="calculator.html">Calculator</a></li>
+        <li><a href="ageCalculator.html">Age Calculator</a></li>
+        <li><a href="stopwatch.html">Stopwatch</a></li>
+        <li><a href="quizz.html">Quizz</a></li>
+      </ul>
+    </nav>
+
+    <!-- Dark Mode Toggle Button -->
+    <button id="theme-toggle" class="theme-toggle">Switch to Dark Mode</button>
+
+    <!-- Calculator -->
+    <div class="card calculator-card">
+      <h2>Calculator</h2>
+      <div id="calculator">
+        <input type="text" id="calc-display" disabled>
+        <div class="button-group">
+          <button class="calc-btn" onclick="inputValue('7')">7</button>
+          <button class="calc-btn" onclick="inputValue('8')">8</button>
+          <button class="calc-btn" onclick="inputValue('9')">9</button>
+          <button class="calc-btn operator" onclick="inputValue('/')">/</button>
+
+          <button class="calc-btn" onclick="inputValue('4')">4</button>
+          <button class="calc-btn" onclick="inputValue('5')">5</button>
+          <button class="calc-btn" onclick="inputValue('6')">6</button>
+          <button class="calc-btn operator" onclick="inputValue('*')">*</button>
+
+          <button class="calc-btn" onclick="inputValue('1')">1</button>
+          <button class="calc-btn" onclick="inputValue('2')">2</button>
+          <button class="calc-btn" onclick="inputValue('3')">3</button>
+          <button class="calc-btn operator" onclick="inputValue('-')">-</button>
+
+          <button class="calc-btn" onclick="inputValue('0')">0</button>
+          <button class="calc-btn" onclick="clearDisplay()">C</button>
+          <button class="calc-btn operator" onclick="calculateResult()">=</button>
+          <button class="calc-btn operator" onclick="inputValue('+')">+</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const themeToggle = document.getElementById('theme-toggle');
+    const body = document.body;
+
+    // Theme toggle functionality
+    themeToggle.addEventListener('click', () => {
+      body.classList.toggle('dark-mode');
+    });
+
+    // Calculator functionality
+    function inputValue(val) {
+      document.getElementById("calc-display").value += val;
+    }
+
+    function clearDisplay() {
+      document.getElementById("calc-display").value = "";
+    }
+
+    function calculateResult() {
+      const display = document.getElementById("calc-display");
+      try {
+        display.value = eval(display.value);
+      } catch {
+        display.value = "Error";
+      }
+    }
+  </script>
+</body>
+</html>
