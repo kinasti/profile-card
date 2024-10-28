@@ -5,12 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Age Calculator</title>
   <link rel="stylesheet" href="agecss.css">
-    <link rel="icon" href="icon.png" type="image/png">
+  <link rel="icon" href="icon.png" type="image/png">
 </head>
 <body>
-    <div class="background-video">
-        <video src="bg.mp4" alt="Background Video" loop autoplay muted></video>
-    </div>
+  <div class="background-video">
+      <video src="bg.mp4" alt="Background Video" loop autoplay muted></video>
+  </div>
 
   <div class="container">
     <!-- Navbar -->
@@ -39,41 +39,67 @@
         <button type="button" id="calculate-age" class="calc-btn">Calculate Age</button>
       </form>
 
-      <div id="age-result"></div>
+      <div id="age-result">
+        <p id="age-text" style="display: none;">Your age is:</p> <!-- Teks yang akan ditampilkan -->
+        <p id="age-details" style="display: none;"></p> <!-- Elemen baru untuk rincian umur -->
+      </div>
     </div>
   </div>
 
   <script>
-document.getElementById('calculate-age').addEventListener('click', function() {
-  const birthdate = document.getElementById('birthdate').value;
-  const ageResult = document.getElementById('age-result');
+    document.getElementById('calculate-age').addEventListener('click', function() {
+      const birthdate = document.getElementById('birthdate').value;
+      const ageText = document.getElementById('age-text');
+      const ageDetails = document.getElementById('age-details');
 
-  if (birthdate) {
-    const today = new Date();
-    const birthDate = new Date(birthdate);
-    let age = today.getFullYear() - birthDate.getFullYear();
-    const monthDifference = today.getMonth() - birthDate.getMonth();
+      if (birthdate) {
+        const today = new Date();
+        const birthDate = new Date(birthdate);
+        
+        // Menghitung tahun
+        let ageYears = today.getFullYear() - birthDate.getFullYear();
+        const monthDifference = today.getMonth() - birthDate.getMonth();
+        const dayDifference = today.getDate() - birthDate.getDate();
 
-    // Adjust if birthday hasn't occurred yet this year
-    if (monthDifference < 0 || (monthDifference === 0 && today.getDate() < birthDate.getDate())) {
-      age--;
-    }
+        // Menyesuaikan jika ulang tahun belum terjadi tahun ini
+        if (monthDifference < 0 || (monthDifference === 0 && dayDifference < 0)) {
+          ageYears--;
+        }
 
-    ageResult.textContent = `Your age is: ${age} years old`;
-  } else {
-    ageResult.textContent = "Please enter a valid birthdate.";
-  }
-});
+        // Menghitung bulan
+        let ageMonths = monthDifference < 0 ? monthDifference + 12 : monthDifference;
+        if (dayDifference < 0) {
+          ageMonths--;
+        }
 
-// Dark mode toggle
-const toggleButton = document.getElementById('theme-toggle');
-toggleButton.addEventListener('click', () => {
-  document.body.classList.toggle('dark-mode');
-  toggleButton.textContent = document.body.classList.contains('dark-mode') 
-    ? 'Switch to Light Mode' 
-    : 'Switch to Dark Mode';
-});
+        // Menghitung hari
+        let ageDays;
+        if (dayDifference < 0) {
+          const lastMonth = new Date(today.getFullYear(), today.getMonth() - 1, 0); // Mengambil hari terakhir bulan lalu
+          ageDays = lastMonth.getDate() + dayDifference; // Menghitung sisa hari
+        } else {
+          ageDays = dayDifference;
+        }
 
-</script>
+        // Menampilkan rincian umur
+        ageText.style.display = "block"; // Menampilkan teks "Your age is:"
+        ageDetails.style.display = "block"; // Menampilkan rincian umur
+        ageDetails.textContent = `${ageYears} years, ${ageMonths} months, ${ageDays} days old.`;
+      } else {
+        ageText.style.display = "none"; // Sembunyikan teks jika input tidak valid
+        ageDetails.textContent = "Please enter a valid birthdate."; // Pesan error
+        ageDetails.style.display = "block"; // Tampilkan pesan error
+      }
+    });
+
+    // Dark mode toggle
+    const toggleButton = document.getElementById('theme-toggle');
+    toggleButton.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+      toggleButton.textContent = document.body.classList.contains('dark-mode') 
+        ? 'Switch to Light Mode' 
+        : 'Switch to Dark Mode';
+    });
+  </script>
 </body>
 </html>
