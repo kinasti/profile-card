@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>HTML, CSS & JS Quiz</title>
-  <link rel="stylesheet" href="quizzcss.css">
+  <link rel="stylesheet" href="trialcss.css">
     <link rel="icon" href="icon.png" type="image/png">
 </head>
 <body>
@@ -37,6 +37,10 @@
         <div id="options-container">
           <!-- Options will be dynamically generated here -->
         </div>
+	<!-- Feedback message container -->
+	<div id="feedback" class="feedback-message" style="display: none;">
+        </div>
+  </div>
       </div>
 
       <!-- Button to proceed to the next question -->
@@ -49,13 +53,18 @@
     </div>
   </div>
 
-  <script>
-    const questions = [
-      {
-        question: "What does HTML stand for?",
-        options: ["Hyper Text Markup Language", "Home Tool Markup Language", "Hyperlinks and Text Markup Language", "Hyper Tool Machine Language"],
-        answer: "Hyper Text Markup Language"
-      },
+<script>
+  const questions = [
+    {
+      question: "What does HTML stand for?",
+      options: [
+        "Hyper Text Markup Language",
+        "Home Tool Markup Language",
+        "Hyperlinks and Text Markup Language",
+        "Hyper Tool Machine Language"
+      ],
+      answer: "Hyper Text Markup Language"
+    },
       {
         question: "Which HTML element is used to define the largest heading?",
         options: ["<h6>", "<head>", "<h1>", "<header>"],
@@ -101,107 +110,120 @@
         options: ["getElementById()", "querySelector()", "getElementByClass()", "getElementByName()"],
         answer: "getElementById()"
       }
-    ];
+    // You can add more questions here
+  ];
 
-    let currentQuestionIndex = 0;
-    let score = 0;
+  let currentQuestionIndex = 0;
+  let score = 0;
 
-    // DOM Elements
-    const questionContainer = document.getElementById('question-container');
-    const questionElement = document.getElementById('question');
-    const optionsContainer = document.getElementById('options-container');
-    const nextButton = document.getElementById('next-btn');
-    const scoreContainer = document.getElementById('score-container');
-    const scoreElement = document.getElementById('score');
+  // DOM Elements
+  const questionContainer = document.getElementById('question-container');
+  const questionElement = document.getElementById('question');
+  const optionsContainer = document.getElementById('options-container');
+  const nextButton = document.getElementById('next-btn');
+  const scoreContainer = document.getElementById('score-container');
+  const scoreElement = document.getElementById('score');
+  const feedbackElement = document.getElementById('feedback');
 
-    // Dark Mode Toggle
-    const toggleButton = document.getElementById('theme-toggle');
-    const body = document.body;
-    toggleButton.addEventListener('click', () => {
-      body.classList.toggle('dark-mode');
-      toggleButton.textContent = body.classList.contains('dark-mode') ? 'Switch to Light Mode' : 'Switch to Dark Mode';
+  // Dark Mode Toggle
+  const toggleButton = document.getElementById('theme-toggle');
+  const body = document.body;
+  toggleButton.addEventListener('click', () => {
+    body.classList.toggle('dark-mode');
+    toggleButton.textContent = body.classList.contains('dark-mode') ? 'Switch to Light Mode' : 'Switch to Dark Mode';
+  });
+
+  // Function to load a question
+  function loadQuestion() {
+    const currentQuestion = questions[currentQuestionIndex];
+    questionElement.textContent = currentQuestion.question;
+    optionsContainer.innerHTML = '';
+    feedbackElement.style.display = 'none'; // Hide feedback on new question
+
+    currentQuestion.options.forEach(option => {
+      const label = document.createElement('label');
+      label.textContent = option;
+
+      const input = document.createElement('input');
+      input.type = 'radio';
+      input.name = 'answer';
+      input.value = option;
+
+      label.prepend(input);
+      optionsContainer.appendChild(label);
     });
 
-    // Function to load a question
-    function loadQuestion() {
-      const currentQuestion = questions[currentQuestionIndex];
-      questionElement.textContent = currentQuestion.question;
-      optionsContainer.innerHTML = '';
+    nextButton.style.display = 'none'; // Hide next button initially
+  }
 
-      currentQuestion.options.forEach(option => {
-        const label = document.createElement('label');
-        label.textContent = option;
-
-        const input = document.createElement('input');
-        input.type = 'radio';
-        input.name = 'answer';
-        input.value = option;
-
-        label.prepend(input);
-        optionsContainer.appendChild(label);
-      });
-
-      nextButton.style.display = 'none';
+  // Check the answer and proceed to the next question
+  optionsContainer.addEventListener('change', () => {
+    const selectedOption = document.querySelector('input[name="answer"]:checked');
+    if (selectedOption) {
+      nextButton.style.display = 'block'; // Show next button if an option is selected
     }
+  });
 
-    // Check the answer and proceed to the next question
-    optionsContainer.addEventListener('change', () => {
-      nextButton.style.display = 'block';
-    });
-
-    nextButton.addEventListener('click', () => {
-      const selectedOption = document.querySelector('input[name="answer"]:checked');
-      if (selectedOption && selectedOption.value === questions[currentQuestionIndex].answer) {
+  nextButton.addEventListener('click', () => {
+    const selectedOption = document.querySelector('input[name="answer"]:checked');
+    if (selectedOption) {
+      // Show feedback
+      if (selectedOption.value === questions[currentQuestionIndex].answer) {
         score++;
+        feedbackElement.textContent = "Correct!";
+        feedbackElement.className = "feedback-message correct"; // Set class for styling
+      } else {
+        feedbackElement.textContent = "Wrong!";
+        feedbackElement.className = "feedback-message wrong"; // Set class for styling
       }
+      feedbackElement.style.display = "block"; // Show feedback
 
       currentQuestionIndex++;
 
       if (currentQuestionIndex < questions.length) {
-        loadQuestion();
+        setTimeout(() => {
+          loadQuestion(); // Load the next question after a brief delay
+        }, 1300); // Adjust delay as needed
       } else {
         displayScore();
       }
-    });
-
-    function displayScore() {
-      questionContainer.style.display = 'none';
-      nextButton.style.display = 'none';
-      scoreContainer.style.display = 'block';
-      scoreElement.textContent = `${score} / ${questions.length}`;
-
-      // Determine the score message
-      let scoreMessage;
-      if (score >= 8) {
-        scoreMessage = '🎉 Congratulations! You scored 8 or more! 🎉';
-      } else {
-        scoreMessage = '😢 Sorry, you scored less than 8. Try again! 😢';
-      }
-
-      // Create a div to hold the score message
-      const messageElement = document.createElement('div');
-      messageElement.innerHTML = scoreMessage;
-      scoreContainer.appendChild(messageElement);
-
-      // Create a retry button if score is less than 8
-      if (score < 8) {
-        const retryButton = document.createElement('button');
-        retryButton.textContent = 'Retry';
-        retryButton.classList.add('retry-btn');
-        retryButton.addEventListener('click', () => {
-          // Reset the quiz
-          currentQuestionIndex = 0;
-          score = 0;
-          scoreContainer.style.display = 'none';
-          questionContainer.style.display = 'block';
-          loadQuestion();
-        });
-        scoreContainer.appendChild(retryButton);
-      }
     }
+  });
 
-    // Load the first question when the page loads
-    loadQuestion();
-  </script>
+  function displayScore() {
+    questionContainer.style.display = 'none';
+    nextButton.style.display = 'none';
+    scoreContainer.style.display = 'block';
+    scoreElement.textContent = `${score} / ${questions.length}`;
+
+    // Determine the score message
+    let scoreMessage = score >= 8 ? '🎉 Congratulations! You scored 8 or more! 🎉' : '😢 Sorry, you scored less than 8. Try again! 😢';
+
+    // Create a div to hold the score message
+    const messageElement = document.createElement('div');
+    messageElement.innerHTML = scoreMessage;
+    scoreContainer.appendChild(messageElement);
+
+    // Create a retry button if score is less than 8
+    if (score < 8) {
+      const retryButton = document.createElement('button');
+      retryButton.textContent = 'Retry';
+      retryButton.classList.add('retry-btn');
+      retryButton.addEventListener('click', () => {
+        // Reset the quiz
+        currentQuestionIndex = 0;
+        score = 0;
+        scoreContainer.style.display = 'none';
+        questionContainer.style.display = 'block';
+        loadQuestion();
+      });
+      scoreContainer.appendChild(retryButton);
+    }
+  }
+
+  // Load the first question when the page loads
+  loadQuestion();
+</script>
+
 </body>
 </html>
