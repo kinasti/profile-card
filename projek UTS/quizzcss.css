@@ -1,268 +1,292 @@
 /* Reset */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+    margin: 0; /* Menghilangkan margin default dari semua elemen */
+    padding: 0; /* Menghilangkan padding default dari semua elemen */
+    box-sizing: border-box; /* Mengatur ukuran elemen termasuk padding dan border dalam width dan height */
 }
 
 body {
-    font-family: 'Poppins', sans-serif;
-    background: linear-gradient(to bottom, #203F9A, #94C2DA); /* Top to bottom gradient */
-    color: #203F9A; /* Bright Blue */
-    transition: background 0.3s, color 0.3s;
-    width: 100vw;
-    height: 100vh;
+    font-family: 'Poppins', sans-serif; /* Menentukan font yang digunakan di seluruh halaman */
+    background: linear-gradient(to bottom, #203F9A, #94C2DA); /* Membuat latar belakang gradien dari biru tua ke biru pastel */
+    color: #203F9A; /* Menentukan warna teks utama */
+    transition: background 0.3s, color 0.3s; /* Menambahkan efek transisi untuk perubahan latar belakang dan warna teks */
+    width: 100vw; /* Mengatur lebar body menjadi 100% dari viewport */
+    height: 100vh; /* Mengatur tinggi body menjadi 100% dari viewport */
 }
+
 /* Background video container */
 .background-video {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100%;
-    overflow: hidden;
-    z-index: -1; /* Supaya di belakang konten lain */
+    position: fixed; /* Menempatkan video dalam posisi tetap */
+    top: 0; /* Mengatur posisi dari atas */
+    left: 0; /* Mengatur posisi dari kiri */
+    width: 100vw; /* Mengatur lebar video menjadi 100% dari viewport */
+    height: 100%; /* Mengatur tinggi video untuk mengisi 100% dari container */
+    overflow: hidden; /* Menyembunyikan bagian video yang melebihi container */
+    z-index: -1; /* Menempatkan video di belakang konten lain */
 }
 
 /* Styling untuk video */
 .background-video video {
-    width: 100vw;
-    height: 100vh;
-    object-fit: cover; /* Agar video memenuhi area dengan rasio aslinya */
-    opacity: 0.4; /* Atur opacity video */
+    width: 100vw; /* Mengatur lebar video menjadi 100% dari viewport */
+    height: 100vh; /* Mengatur tinggi video menjadi 100% dari viewport */
+    object-fit: cover; /* Mengatur video agar memenuhi area tanpa merusak rasio aspeknya */
+    opacity: 0.4; /* Mengatur transparansi video agar tidak mengganggu konten di depan */
 }
 
 .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
+    max-width: 1200px; /* Mengatur lebar maksimum container */
+    margin: 0 auto; /* Mengatur margin otomatis untuk memusatkan container */
+    padding: 20px; /* Menambahkan padding di dalam container */
 }
 
 /* Navbar */
 .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #94C2DA; /* Pastel Blue */
-    padding: 15px 30px;
-    border-radius: 20px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    display: flex; /* Mengatur navbar menggunakan flexbox */
+    justify-content: space-between; /* Mengatur jarak antara elemen navbar */
+    align-items: center; /* Menyelaraskan elemen di tengah secara vertikal */
+    background-color: #94C2DA; /* Menentukan warna latar belakang navbar */
+    padding: 15px 30px; /* Menambahkan padding pada navbar */
+    border-radius: 20px; /* Mengatur sudut navbar menjadi bulat */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Menambahkan bayangan untuk memberikan efek kedalaman */
 }
 
 .logo {
-    font-size: 24px;
-    font-weight: bold;
-    color: #203F9A; /* Bright Blue */
+    font-size: 24px; /* Mengatur ukuran font untuk logo */
+    font-weight: bold; /* Mengatur ketebalan font untuk logo */
+    color: #203F9A; /* Menentukan warna teks logo */
 }
 
 .nav-links {
-    list-style: none;
-    display: flex;
-    gap: 15px;
+    list-style: none; /* Menghilangkan bullet point dari list */
+    display: flex; /* Mengatur list menjadi flexbox */
+    gap: 15px; /* Menambahkan jarak antara link */
 }
 
 .nav-links a {
-    text-decoration: none;
-    padding: 10px 20px;
-    color: #ffffff;
-    border-radius: 20px;
-    background-color: #203F9A; /* Bright Blue */
-    transition: background-color 0.3s;
+    text-decoration: none; /* Menghilangkan garis bawah dari link */
+    padding: 10px 20px; /* Menambahkan padding pada link */
+    color: #ffffff; /* Menentukan warna teks link */
+    border-radius: 20px; /* Mengatur sudut link menjadi bulat */
+    background-color: #203F9A; /* Menentukan warna latar belakang link */
+    transition: background-color 0.3s; /* Menambahkan efek transisi pada warna latar belakang */
 }
 
 .nav-links a:hover {
-    background-color: #937bb6; /* Slightly lighter blue */
+    background-color: #937bb6; /* Mengubah warna latar belakang saat hover */
 }
 
 /* Toggle Button */
 .theme-toggle {
-    background-color: #ffffff;
-    color: #203F9A; /* Bright Blue */
-    padding: 10px 20px;
-    border: none;
-    border-radius: 20px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    margin-top: 10px;
-    margin-bottom: 25px;
+    background-color: #ffffff; /* Menentukan warna latar belakang tombol tema */
+    color: #203F9A; /* Menentukan warna teks tombol tema */
+    padding: 10px 20px; /* Menambahkan padding pada tombol tema */
+    border: none; /* Menghilangkan border dari tombol */
+    border-radius: 20px; /* Mengatur sudut tombol menjadi bulat */
+    cursor: pointer; /* Mengubah kursor menjadi pointer saat hover */
+    transition: background-color 0.3s; /* Menambahkan efek transisi pada warna latar belakang */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Menambahkan bayangan pada tombol tema */
+    margin-top: 10px; /* Menambahkan margin atas */
+    margin-bottom: 25px; /* Menambahkan margin bawah */
 }
 
 .theme-toggle:hover {
-    background-color: black;
-    color: white;
-    box-shadow: 0 0 10px  #250e2c;
+    background-color: black; /* Mengubah warna latar belakang tombol tema saat hover */
+    color: white; /* Mengubah warna teks tombol tema saat hover */
+    box-shadow: 0 0 10px #250e2c; /* Menambahkan efek bayangan saat hover */
 }
 
 /* Question Card */
 .question-card {
-    background: rgba(255, 255, 255, 0.9);
-    padding: 20px;
-    width: 55%;
-    max-width: 800px;
-    border-radius: 15px;
-    margin: 0 auto 20px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    text-align: center;
+    background: rgba(255, 255, 255, 0.9); /* Mengatur latar belakang kartu soal dengan transparansi */
+    padding: 20px; /* Menambahkan padding di dalam kartu soal */
+    width: 55%; /* Mengatur lebar kartu soal */
+    max-width: 800px; /* Mengatur lebar maksimum kartu soal */
+    border-radius: 15px; /* Mengatur sudut kartu soal menjadi bulat */
+    margin: 0 auto 20px; /* Memusatkan kartu soal dengan margin bawah */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Menambahkan bayangan pada kartu soal */
+    text-align: center; /* Mengatur teks di dalam kartu soal agar berada di tengah */
 }
 
 h1 {
-    text-align: center;
-    color: white; /* Bright mode header color */
-    margin-bottom: 25px; 
-    font-size: 1.5em;   
+    text-align: center; /* Menempatkan teks judul di tengah */
+    color: white; /* Mengatur warna judul menjadi putih */
+    margin-bottom: 25px; /* Menambahkan jarak bawah pada judul */
+    font-size: 1.5em; /* Mengatur ukuran font untuk judul */
 }
 
 .question {
-    font-weight: 600;
-    margin-bottom: 15px;
+    font-weight: 600; /* Mengatur ketebalan font untuk pertanyaan */
+    margin-bottom: 15px; /* Menambahkan jarak bawah pada pertanyaan */
 }
 
 #options-container label {
-    display: block;
-    padding: 10px;
-    background-color: #203F9A; /* Bright mode option label */
-    color: #fff; /* Bright mode option text */
-    border-radius: 10px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    margin: 10px 0;
+    display: block; /* Mengatur label menjadi block agar memanjang ke seluruh lebar */
+    padding: 10px; /* Menambahkan padding pada label */
+    margin: 0 auto 20px; /* Mengatur margin otomatis dan margin bawah */
+    background-color: #203F9A; /* Mengatur warna latar belakang label */
+    color: #fff; /* Mengatur warna teks label */
+    border-radius: 10px; /* Mengatur sudut label menjadi bulat */
+    cursor: pointer; /* Mengubah kursor menjadi pointer saat hover */
+    transition: background-color 0.3s; /* Menambahkan efek transisi pada warna latar belakang */
+    margin: 10px 0; /* Menambahkan margin atas dan bawah */
 }
 
 #options-container label:hover {
-    background-color: #4A90E2; /* Bright mode option hover */
+    background-color: #4A90E2; /* Mengubah warna latar belakang label saat hover */
+}
+
+.feedback-message {
+    margin-top: 20px; /* Menambahkan margin atas pada pesan umpan balik */
+    padding: 10px; /* Menambahkan padding di dalam pesan umpan balik */
+    border-radius: 10px; /* Mengatur sudut pesan umpan balik menjadi bulat */
+    color: white; /* Mengatur warna teks pesan umpan balik */
+    font-weight: bold; /* Mengatur ketebalan font pesan umpan balik */
+    display: none; /* Awalnya disembunyikan */
+    text-align: center; /* Menempatkan teks di tengah */
+}
+
+.feedback-message.correct {
+    background-color: green; /* Mengatur latar belakang untuk jawaban benar */
+}
+
+.feedback-message.wrong {
+    background-color: red; /* Mengatur latar belakang untuk jawaban salah */
 }
 
 /* Next Button */
 #next-btn {
-    background-color: #203F9A; /* Bright mode next button */
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 20px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    display: block;
-    margin: 20px auto;
+    background-color: #203F9A; /* Mengatur warna latar belakang tombol berikutnya */
+    color: white; /* Mengatur warna teks tombol berikutnya */
+    padding: 10px 20px; /* Menambahkan padding pada tombol berikutnya */
+    border: none; /* Menghilangkan border dari tombol */
+    border-radius: 20px; /* Mengatur sudut tombol berikutnya menjadi bulat */
+    cursor: pointer; /* Mengubah kursor menjadi pointer saat hover */
+    transition: background-color 0.3s; /* Menambahkan efek transisi pada warna latar belakang */
+    display: block; /* Mengatur tombol untuk ditampilkan sebagai block */
+    margin: 20px auto; /* Memusatkan tombol dengan margin atas dan bawah */
 }
 
 #next-btn:hover {
-    background-color: #4A90E2; /* Bright mode next button hover */
+    background-color: #4A90E2; /* Mengubah warna latar belakang tombol berikutnya saat hover */
 }
 
 /* Score Display */
 #score-container h2 {
-    text-align: center;
-    font-size: 2em;
-    font-weight: bold;
-    color: #203F9A;
+    text-align: center; /* Menempatkan teks skor di tengah */
+    font-size: 2em; /* Mengatur ukuran font untuk teks skor */
+    font-weight: bold; /* Mengatur ketebalan font untuk teks skor */
+    color: #203F9A; /* Mengatur warna teks skor */
 }
 
 /* Score Container - Bright Mode */
 #score-container {
-    display: none;
-    margin: 0 auto 20px;
-    padding: 20px;
-    width: 100%;
-    max-width: 800px;
-    background: rgba(255, 255, 255, 0.9);
-    border-radius: 15px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    color: #203F9A; /* Bright mode score text */
+    display: none; /* Awalnya disembunyikan */
+    margin: 0 auto 20px; /* Memusatkan container skor dengan margin bawah */
+    padding: 20px; /* Menambahkan padding di dalam container skor */
+    width: 100%; /* Mengatur lebar container skor menjadi 100% */
+    max-width: 800px; /* Mengatur lebar maksimum container skor */
+    background: rgba(255, 255, 255, 0.9); /* Mengatur latar belakang container skor dengan transparansi */
+    border-radius: 15px; /* Mengatur sudut container skor menjadi bulat */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Menambahkan bayangan pada container skor */
+    color: #203F9A; /* Mengatur warna teks skor */
 }
 
 /* Retry Button */
 .retry-btn {
-    background-color: #203F9A; /* Bright mode retry button */
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 20px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    margin-top: 20px;
-    text-align: center;
+    background-color: #203F9A; /* Mengatur warna latar belakang tombol coba lagi */
+    color: white; /* Mengatur warna teks tombol coba lagi */
+    padding: 10px 20px; /* Menambahkan padding pada tombol coba lagi */
+    border: none; /* Menghilangkan border dari tombol */
+    border-radius: 20px; /* Mengatur sudut tombol coba lagi menjadi bulat */
+    cursor: pointer; /* Mengubah kursor menjadi pointer saat hover */
+    transition: background-color 0.3s; /* Menambahkan efek transisi pada warna latar belakang */
+    margin-top: 20px; /* Menambahkan margin atas pada tombol coba lagi */
+    text-align: center; /* Menempatkan teks tombol coba lagi di tengah */
 }
 
 .retry-btn:hover {
-    background-color: #4A90E2; /* Bright mode retry button hover */
+    background-color: #4A90E2; /* Mengubah warna latar belakang tombol coba lagi saat hover */
 }
 
 /* Dark Mode Styles */
 body.dark-mode {
-    background: linear-gradient(135deg, #250e2c, #837ab6); /* Dark mode background */
-    color: #f7c2ca; /* Dark mode text color */
+    background: linear-gradient(135deg, #250e2c, #837ab6); /* Mengatur latar belakang untuk mode gelap */
+    color: #f7c2ca; /* Mengatur warna teks untuk mode gelap */
 }
 
 body.dark-mode .logo {
-    color: #f7c2ca;
+    color: #f7c2ca; /* Mengatur warna logo untuk mode gelap */
 }
 
 body.dark-mode .navbar {
-    background-color: #250e2c; /* Dark mode navbar */
+    background-color: #250e2c; /* Mengatur warna navbar untuk mode gelap */
 }
 
 body.dark-mode .nav-links a {
-    background-color: #837ab6; /* Dark mode link background */
+    background-color: #837ab6; /* Mengatur warna latar belakang link untuk mode gelap */
 }
 
 body.dark-mode .theme-toggle {
-    background-color: black; /* Dark mode toggle button */
-    color:white;
+    background-color: black; /* Mengatur warna latar belakang tombol tema untuk mode gelap */
+    color: white; /* Mengatur warna teks tombol tema untuk mode gelap */
 }
 
 body.dark-mode .theme-toggle:hover {
-    background-color: white;
-    color: black;
-    box-shadow: 0 0 10px #837ab6; 
+    background-color: white; /* Mengubah warna latar belakang tombol tema saat hover di mode gelap */
+    color: black; /* Mengubah warna teks tombol tema saat hover di mode gelap */
+    box-shadow: 0 0 10px #837ab6; /* Menambahkan efek bayangan saat hover di mode gelap */
 }
 
 body.dark-mode .question-card {
-    background: rgba(37, 14, 44, 0.8); /* Dark mode question card */
+    background: rgba(37, 14, 44, 0.8); /* Mengatur latar belakang kartu soal untuk mode gelap */
 }
 
 body.dark-mode #score-container h2 {
-    color: #f7c2ca;
+    color: #f7c2ca; /* Mengatur warna teks skor untuk mode gelap */
 }
 
 body.dark-mode #next-btn {
-    background-color: #837ab6; /* Dark mode next button */
+    background-color: #837ab6; /* Mengatur warna latar belakang tombol berikutnya untuk mode gelap */
 }
 
 body.dark-mode #options-container label {
-    background-color: #837ab6; /* Dark mode option label */
+    background-color: #837ab6; /* Mengatur warna latar belakang label opsi untuk mode gelap */
 }
 
 /* Dark Mode - Score Container */
 body.dark-mode #score-container {
-    background-color: #837ab6; /* Dark mode score container */
-    color: #f7c2ca; /* Dark mode score text */
-    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+    background-color: #837ab6; /* Mengatur warna latar belakang container skor untuk mode gelap */
+    color: #f7c2ca; /* Mengatur warna teks skor untuk mode gelap */
+    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1); /* Menambahkan bayangan pada container skor di mode gelap */
 }
 
-body.dar-mode .retry-btn {
-    background-color: #837ab6;
+/* Dark Mode - Retry Button */
+body.dark-mode .retry-btn {
+    background-color: #837ab6; /* Mengatur warna latar belakang tombol coba lagi untuk mode gelap */
 }
 
-body.dar-mode .retry-btn:hover {
-    background-color: #937bb6; /* Bright mode retry button hover */
+body.dark-mode .retry-btn:hover {
+    background-color: #937bb6; /* Mengubah warna latar belakang tombol coba lagi saat hover di mode gelap */
 }
 
 /* Responsive Layout for Mobile */
 @media (max-width: 768px) {
     body {
-        width: 100vw;
-        height: 100vh;
-    
+        width: 100vw; /* Mengatur lebar body menjadi 100% dari viewport pada layar kecil */
+        height: 100vh; /* Mengatur tinggi body menjadi 100% dari viewport pada layar kecil */
     }
     .navbar {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 10px;
+        flex-direction: column; /* Mengatur navbar menjadi kolom untuk tampilan mobile */
+        align-items: flex-start; /* Menyelaraskan elemen navbar ke kiri */
+        gap: 10px; /* Menambahkan jarak antara elemen navbar */
     }
 
     .nav-links {
-        flex-direction: column;
-        gap: 20px;
+        flex-direction: column; /* Mengatur link navbar menjadi kolom untuk tampilan mobile */
+        gap: 20px; /* Menambahkan jarak antara link navbar */
+    }
+
+    .question-card {
+        width: 90%; /* Mengatur lebar kartu soal untuk tampilan mobile */
     }
 }
